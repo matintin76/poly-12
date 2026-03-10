@@ -1,0 +1,21 @@
+{
+  "$schema": "https://railway.com/railway.schema.json",
+  "build": {
+    "builder": "RAILPACK"
+  },
+  "deploy": {
+    "runtime": "V2",
+    "numReplicas": 1,
+    "startCommand": "while true; do python fastloop_trader.py --live --quiet; sleep 300; done",
+    "sleepApplication": false,
+    "useLegacyStacker": false,
+    "ipv6EgressEnabled": false,
+    "multiRegionConfig": {
+      "europe-west4-drams3a": {
+        "numReplicas": 1
+      }
+    },
+    "restartPolicyType": "ALWAYS",
+    "restartPolicyMaxRetries": 10
+  }
+}
